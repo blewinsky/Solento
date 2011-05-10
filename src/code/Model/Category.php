@@ -28,7 +28,7 @@ class Danslo_Solr_Model_Category extends Mage_Catalog_Model_Category {
         return $categories;
     }
     
-    public function getResource() {
+    public function _getResource() {
         if (Mage::helper('catalog/category_flat')->isEnabled()) {
             return Mage::getResourceSingleton('solr/category');
         } else {

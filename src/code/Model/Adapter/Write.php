@@ -1,6 +1,6 @@
 <?php
 
-class Danslo_Solr_Model_Adapter_Update {
+class Danslo_Solr_Model_Adapter_Write {
     /* 
      * TODO: 
      * - At one point we probably want to map tables to solr cores. 
@@ -32,7 +32,6 @@ class Danslo_Solr_Model_Adapter_Update {
         $client = new Solarium_Client();
         $client->update($query);
     }
-    
 }
 
 ?>

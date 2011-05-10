@@ -10,28 +10,17 @@
  * of methods.
  */
 class Danslo_Solr_Model_Resource_Category extends Mage_Catalog_Model_Resource_Eav_Mysql4_Category_Flat {
-
-    public function getChildren($category, $recursive = true, $isActive = true) {
-        die($category->getName());
-        $select = $this->_getReadAdapter()->select()
-            ->from($this->getMainStoreTable($category->getStoreId()), 'entity_id')
-            ->where('path LIKE ?', "{$category->getPath()}/%");
-        if (!$recursive) {
-            $select->where('level <= ?', $category->getLevel() + 1);
-        }
-        if ($isActive) {
-            $select->where('is_active = ?', '1');
-        }
-        $_categories = $this->_getReadAdapter()->fetchAll($select);
-        $categoriesIds = array();
-        foreach ($_categories as $_category) {
-            $categoriesIds[] = $_category['entity_id'];
-        }
-        return $categoriesIds;
+    
+    protected function _getSolrWriteAdapter() {
+        return Mage::getModel('solr/adapter_write');
     }
     
-    protected function _getSolrUpdateAdapter() {
-        return Mage::getModel('solr/adapter_update');
+    protected function _getSolrReadAdapter() {
+        return Mage::getModel('solr/adapter_read');
+    }
+    
+    public function checkId($id) {
+        return $this->_getSolrReadAdapter()->entityExists($id);
     }
     
     public function rebuild($stores = null) {
@@ -75,8 +64,7 @@ class Danslo_Solr_Model_Resource_Category extends Mage_Catalog_Model_Resource_Ea
                         array_merge($category, $attributesData[$category['entity_id']])
                     );
                 }
-                //$this->_getWriteAdapter()->insertMultiple($this->getMainStoreTable($store->getId()), $data);
-                $this->_getSolrUpdateAdapter()->insertMultiple($this->getMainStoreTable($store->getId()), $data);
+                $this->_getSolrWriteAdapter()->insertMultiple($this->getMainStoreTable($store->getId()), $data);
             }
         }
         return $this;
