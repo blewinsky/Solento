@@ -6,26 +6,12 @@ class Danslo_Solr_Model_Category extends Mage_Catalog_Model_Category {
         /*
          * TODO: Support recursionLevel / sorting / collection.
          */
-        $query = new Solarium_Query_Select();
-        $query->addFilterQuery(array(
+        $filter = array(
             'key'   => 'fq_show_categories',
             'tag'   => array('showCategories'),
-            'query' => sprintf('include_in_menu:true AND parent_id:%d', $parent)
-        ));
+            'query' => sprintf('include_in_menu:true AND parent_id:%d', $parent));
 
-        $client = new Solarium_Client();
-        $result = $client->select($query);
-        
-        $categories = array();
-        foreach($result as $document) {
-            $category = Mage::getModel('catalog/category');
-            foreach($document->getFields() as $field => $value) {
-                $category->setData($field, $value);
-            }
-            $categories[] = $category;
-        }
-
-        return $categories;
+        return $this->_getResource()->getDocuments('catalog/category', array($filter));
     }
     
     public function _getResource() {

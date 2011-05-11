@@ -1,13 +1,11 @@
 <?php
 
-class Danslo_Solr_Model_Adapter_Write {
-    /* 
-     * TODO: 
-     * - At one point we probably want to map tables to solr cores. 
-     * - We need an abstraction for Solr_Client so we can deal with backend configuration.
-     */
+class Danslo_Solr_Model_Adapter_Write extends Danslo_Solr_Model_Adapter_Abstract {
+
     public function insertMultiple($table, array $data) {
-        /* Generate the solr documents. */
+        /*
+         * Generate the solr documents.
+         */
         $solr_documents = array();
         foreach($data as $document) {
             $solr_document = new Solarium_Document_ReadWrite();
@@ -22,16 +20,20 @@ class Danslo_Solr_Model_Adapter_Write {
             unset($solr_document);
         }
         
-        /* Create the query. */
+        /*
+         * Create the query.
+         */
         $query = new Solarium_Query_Update;
         $query->addDocuments($solr_documents);
         $query->addCommit();
         $query->addOptimize();
         
-        /* Update into Solr. */
-        $client = new Solarium_Client();
-        $client->update($query);
+        /*
+         * Update into Solr.
+         */
+        $this->getClient()->update($query);
     }
+
 }
 
 ?>
