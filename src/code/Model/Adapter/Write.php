@@ -6,11 +6,12 @@ class Danslo_Solr_Model_Adapter_Write extends Danslo_Solr_Model_Adapter_Abstract
         /*
          * Generate the solr documents.
          */
+        $helper = Mage::helper('solr/category');
         $solr_documents = array();
         foreach($data as $document) {
             $solr_document = new Solarium_Document_ReadWrite();
             foreach($document as $field => $value) {
-                if(Mage::helper('solr/category')->isDefaultField($field)) {
+                if($helper->isDefaultField($field)) {
                     $solr_document->{$field} = $value;
                 } else {
                     $solr_document->{$field.'_s'} = $value; /* Custom data. */ 
