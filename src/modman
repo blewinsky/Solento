@@ -1,3 +1,0 @@
-code			app/code/local/Danslo/Solr/
-bootstrap.xml		app/etc/modules/Danslo_Solr.xml
-../solarium		lib/Solarium/
