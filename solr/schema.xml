@@ -41,7 +41,7 @@
         <field type="str" name="page_layout" indexed="true" stored="true" required="false" /> 
         <field type="str" name="path_in_store" indexed="true" stored="true" required="false" /> 
         <field type="str" name="thumbnail" indexed="true" stored="true" required="false" /> 
-        <field type="str" name="url_key" indexed="true" stored="true" required="true" /> 
+        <field type="str" name="url_key" indexed="true" stored="true" required="false" />
         <field type="str" name="url_path" indexed="true" stored="true" required="false" />
         
         <!-- For custom fields we will just use dynamic string as we have no information about them. -->
