@@ -37,7 +37,7 @@
         <field type="str" name="meta_description" indexed="true" stored="true" required="false" /> 
         <field type="str" name="meta_keywords" indexed="true" stored="true" required="false" /> 
         <field type="str" name="meta_title" indexed="true" stored="true" required="false" /> 
-        <field type="str" name="name" indexed="true" stored="true" required="true" /> 
+        <field type="str" name="name" indexed="true" stored="true" required="false" />
         <field type="str" name="page_layout" indexed="true" stored="true" required="false" /> 
         <field type="str" name="path_in_store" indexed="true" stored="true" required="false" /> 
         <field type="str" name="thumbnail" indexed="true" stored="true" required="false" /> 
