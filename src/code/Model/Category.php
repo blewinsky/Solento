@@ -11,7 +11,7 @@ class Danslo_Solr_Model_Category extends Mage_Catalog_Model_Category {
             'tag'   => array('showCategories'),
             'query' => sprintf('include_in_menu:true AND parent_id:%d', $parent));
 
-        return $this->_getResource()->getDocuments('catalog/category', array($filter));
+        return $this->_getResource()->_getSolrReadAdapter()->getDocuments('catalog/category', array($filter));
     }
     
     public function _getResource() {

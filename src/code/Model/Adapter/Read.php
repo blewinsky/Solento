@@ -16,7 +16,7 @@ class Danslo_Solr_Model_Adapter_Read extends Danslo_Solr_Model_Adapter_Abstract 
         return $this->getClient()->select($query)->getNumFound() != 0;
     }
 
-    public function getDocuments($type = 'catalog/category', $filters = false) {
+    public function getDocuments($type, $filters = false) {
         /*
          * Apply filters.
          */
