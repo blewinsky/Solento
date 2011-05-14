@@ -34,6 +34,7 @@ class Danslo_Solr_Model_Category extends Mage_Catalog_Model_Category {
         if (Mage::helper('catalog/category_flat')->isEnabled()) {
             return Mage::getResourceSingleton('solr/category');
         } else {
+        	/** If we get here, we get nesting errors. please fix */
             return parent::getResource();
         }
     }
