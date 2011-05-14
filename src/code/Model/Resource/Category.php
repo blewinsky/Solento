@@ -12,11 +12,11 @@
 class Danslo_Solr_Model_Resource_Category extends Mage_Catalog_Model_Resource_Eav_Mysql4_Category_Flat {
     
     public function _getSolrWriteAdapter() {
-        return Mage::getModel('solr/adapter_write');
+        return Mage::getModel('solr/adapter_write_category');
     }
     
     public function _getSolrReadAdapter() {
-        return Mage::getModel('solr/adapter_read');
+        return Mage::getModel('solr/adapter_read_category');
     }
     
     public function checkId($id) {

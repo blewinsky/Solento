@@ -7,11 +7,16 @@
 
 class Danslo_Solr_Model_Adapter_Abstract {
 
+    protected $_core   = null;
     protected $_client = null;
 
     protected function getClient() {
         if($this->_client == null) {
-            $this->_client = new Solarium_Client();
+            $config = array();
+            if($this->_core) {
+                $config['core'] = $this->_core;
+            }
+            $this->_client = new Solarium_Client($config);
         }
         return $this->_client;
     }
