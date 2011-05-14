@@ -17,6 +17,7 @@ class Danslo_Solr_Model_Category extends Mage_Catalog_Model_Category {
         /*
          * TODO: Support recursionLevel / sorting / collection.
          */
+         die('JA');
         $filter = array(
             'key'   => 'fq_show_categories',
             'tag'   => array('showCategories'),

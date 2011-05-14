@@ -7,11 +7,12 @@
 			</solr>
 		</helpers>
 		<models>
-                        <catalog>
-                            <rewrite>
-                                <category>Danslo_Solr_Model_Category</category>
-                            </rewrite>
-                        </catalog>
+			<catalog>
+				<rewrite>
+					<category>Danslo_Solr_Model_Category</category>
+					<product>Danslo_Solr_Model_Product</product>
+				</rewrite>
+			</catalog>
 			<solr>
 				<class>Danslo_Solr_Model</class>
 				<resourceModel>solr_resource</resourceModel>
