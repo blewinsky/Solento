@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config>
+    <global>
+        <models>
+            <catalogsearch>
+                <class>Danslo_SolrSearch_Model</class>
+                <resourceModel>catalogsearch_solr</resourceModel>
+            </catalogsearch>
+            
+            <catalogsearch_solr>
+                <class>Danslo_SolrSearch_Resource</class>
+                <entities>
+                    <search_query>
+                        <table>catalogsearch_query</table>
+                    </search_query>
+                    <result>
+                        <table>catalogsearch_result</table>
+                    </result>
+                    <fulltext>
+                        <table>catalogsearch_fulltext</table>
+                    </fulltext>
+                </entities>
+            </catalogsearch_solr>
+        </models>
+        <helpers>
+            <catalogsearch>
+                <class>Danslo_SolrSearch_Helper</class>
+            </catalogsearch>
+        </helpers>
+		<index>
+			<indexer>
+				<solr_catalog_category>
+					<model>Danslo_Solr_Indexer_Catalog_Category</model>
+				</solr_catalog_category>
+			</indexer>
+		</index>
+    </global>
+ 
+    <default>
+        <catalog>
+            <seo>
+                <search_terms>1</search_terms>
+                <site_map>1</site_map>
+            </seo>
+            <search>
+                <min_query_length>1</min_query_length>
+                <max_query_length>128</max_query_length>
+                <max_query_words>10</max_query_words>
+                <search_type>1</search_type>
+                <use_layered_navigation_count>2000</use_layered_navigation_count>
+            </search>
+        </catalog>
+    </default>
+</config>
