@@ -1,4 +1,5 @@
 src/code/Solr			app/code/local/Danslo/Solr/
 src/code/SolrSearch		app/code/local/Danslo/SolrSearch/
-src/bootstrap.xml		app/etc/modules/Danslo_Solr.xml
+src/solr.xml			app/etc/modules/Danslo_Solr.xml
+src/solrsearch.xml		app/etc/modules/Danslo_SolrSearch.xml
 solarium/library/Solarium	lib/Solarium/
